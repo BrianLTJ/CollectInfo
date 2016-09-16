@@ -3,7 +3,9 @@
         {% if result == 'ok' %}操作成功{% elif result == 'error' %}操作失败{% endif %}
 {% endblock %}
 {% block content %}
-    {% if result == 'ok' %}操作成功
-    {% elif result == 'error' %}操作失败
+    {% if result == 'ok' %}
+        <div class="msgbox" style="background-color: #4caf50">操作成功</div>
+    {% elif result == 'error' %}
+        <div class="msgbox" style="background-color: #f44336">操作失败</div>
     {% endif %}
 {% endblock %}
