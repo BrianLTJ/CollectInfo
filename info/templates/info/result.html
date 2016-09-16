@@ -1,0 +1,9 @@
+{% extends 'info/result_base.html' %}
+{% block page_title %}
+        {% if result == 'ok' %}操作成功{% elif result == 'error' %}操作失败{% endif %}
+{% endblock %}
+{% block content %}
+    {% if result == 'ok' %}操作成功
+    {% elif result == 'error' %}操作失败
+    {% endif %}
+{% endblock %}

@@ -2,9 +2,47 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>填写信息</title>
 </head>
 <body>
-	
+<div class="container">
+    <form action="{% url 'info:add_handler' %}" method="post">
+        <div>
+            <label for="name">姓名</label>
+            <input type="text" name="name" required>
+        </div>
+
+        <div>
+            <label for="phone">电话</label>
+            <input type="text" name="phone" required>
+        </div>
+
+        <div>
+            <label for="phone">生日</label>
+            <input type="text" name="birthday" required>
+        </div>
+
+        <div>
+            <label for="qq">QQ</label>
+            <input type="text" name="qq" required>
+        </div>
+
+        <div>
+            <label for="dorm">宿舍</label>
+            <input type="text" name="dorm" required>
+        </div>
+
+        <div>
+            <label for="place">籍贯</label>
+            <input type="text" name="place" required>
+        </div>
+        {% csrf_token %}
+        <button type="submit">提交</button>
+    </form>
+</div>
+
 </body>
 </html>
