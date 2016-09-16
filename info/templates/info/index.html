@@ -15,6 +15,14 @@
             <label for="name">姓名</label>
             <input class="input-box" type="text" name="name" required>
         </div>
+        
+        <div class="form-group">
+            <label for="">性别</label>
+            <select class="input-box" name="sex" id="">
+                <option value="男" selected>男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="phone">电话</label>
@@ -40,9 +48,85 @@
             <label for="place">籍贯</label>
             <input class="input-box" type="text" name="place" required>
         </div>
+
+        <div class="form-group">
+            <label for="">身高</label>
+            <input class="input-box" type="text" name="height">
+        </div>
+
+        <div class="form-group">
+            <label for="">体重</label>
+            <input class="input-box" type="text" name="weight">
+        </div>
+
+        <div class="form-group">
+            <label for="">文化衫型号</label>
+            <select class="input-box" name="size" id="">
+                <option value="-" selected>----</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="XXXL">XXXL</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="">文化衫型号参考</label>
+            <table>
+                <tr>
+                    <th>型号</th>
+                    <th>男</th>
+                    <th>女</th>
+                </tr>
+                <tr>
+                    <td>S</td>
+                    <td>160</td>
+                    <td>155~160</td>
+                </tr>
+                <tr>
+                    <td>M</td>
+                    <td>165</td>
+                    <td>160~165</td>
+                </tr>
+                <tr>
+                    <td>L</td>
+                    <td>170</td>
+                    <td>165~170</td>
+                </tr>
+                <tr>
+                    <td>XL</td>
+                    <td>175</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>XXL</td>
+                    <td>180</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>XXXL</td>
+                    <td>185</td>
+                    <td>&nbsp;</td>
+                </tr>
+
+            </table>
+        </div>
         {% csrf_token %}
         <button type="submit" class="submit">提交</button>
     </form>
+
+    <div>
+        <p></p>
+        <h3>已经填写？</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group"><label for="">姓名</label><input type="text" class="input-box" name="name" required></div>
+            <div class="form-group"><label for="">手机号码</label><input type="text" class="input-box" name="phone" require></div>
+            <button type="submit" class="submit" style="background-color: #4caf50">修改</button>
+        </form>
+    </div>
 </div>
 
 </body>
