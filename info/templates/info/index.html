@@ -13,62 +13,70 @@
     <form action="{% url 'info:add_handler' %}" method="post">
         <div class="form-group">
             <label for="name">姓名</label>
+            {% if type == 'new' %}
             <input class="input-box" type="text" name="name" required>
+            {% else %}
+            <div>{{ p.name }}</div>
+            {% endif %}
         </div>
         
         <div class="form-group">
             <label for="">性别</label>
             <select class="input-box" name="sex" id="">
-                <option value="男" selected>男</option>
-                <option value="女">女</option>
+                <option value="男" {% if type == 'new' or p.sex == '男' %} selected{% endif %}>男</option>
+                <option value="女" {% if p.sex == '女' %} selected{% endif %}>女</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="phone">电话</label>
+            {% if type == 'new' %}
             <input class="input-box" type="text" name="phone" required>
+            {% else %}
+            <div>{{ p.phone }}</div>
+            {% endif %}
         </div>
 
         <div class="form-group">
             <label for="phone">生日</label>
-            <input class="input-box" type="text" name="birthday" required>
+            <input class="input-box" type="text" name="birthday" value="{{ p.birthday }}" required>
         </div>
 
         <div class="form-group">
             <label for="qq">QQ</label>
-            <input class="input-box" type="text" name="qq" required>
+            <input class="input-box" type="text" name="qq" value="{{ p.qq }}" required>
         </div>
 
         <div class="form-group">
             <label for="dorm">宿舍</label>
-            <input class="input-box" type="text" name="dorm" required>
+            <input class="input-box" type="text" name="dorm" value="{{ p.dorm }}" required>
         </div>
 
         <div class="form-group">
             <label for="place">籍贯</label>
-            <input class="input-box" type="text" name="place" required>
+            <input class="input-box" type="text" name="place" value="{{ p.place }}" required>
         </div>
 
         <div class="form-group">
             <label for="">身高</label>
-            <input class="input-box" type="text" name="height">
+            <input class="input-box" type="text" name="height" value="{{ p.height }}" required>
         </div>
 
         <div class="form-group">
             <label for="">体重</label>
-            <input class="input-box" type="text" name="weight">
+            <input class="input-box" type="text" name="weight" value="{{ p.weight }}" required>
         </div>
 
         <div class="form-group">
             <label for="">文化衫型号</label>
             <select class="input-box" name="size" id="">
-                <option value="-" selected>----</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-                <option value="XXXL">XXXL</option>
+                <option value="-" {% if type == 'new' or p.size == '' %} selected{% endif %}>----</option>
+                <option value="S" {% if p.size == 'S' %} selected{% endif %}>S</option>
+                <option value="M" {% if p.size == 'M' %} selected{% endif %}>M</option>
+                <option value="L" {% if p.size == 'L' %} selected{% endif %}>L</option>
+                <option value="XL" {% if p.size == 'XL' %} selected{% endif %}>XL</option>
+                <option value="XXL" {% if p.size == 'XXL' %} selected{% endif %}>XXL</option>
+                <option value="XXXL" {% if p.size == 'XXXL' %} selected{% endif %}>XXXL</option>
             </select>
         </div>
 
@@ -116,7 +124,7 @@
         {% csrf_token %}
         <button type="submit" class="submit">提交</button>
     </form>
-
+    {% if type == 'new' %}
     <div>
         <p></p>
         <h3>已经填写？</h3>
@@ -127,6 +135,7 @@
             <button type="submit" class="submit" style="background-color: #4caf50">修改</button>
         </form>
     </div>
+    {% endif %}
 </div>
 
 </body>
