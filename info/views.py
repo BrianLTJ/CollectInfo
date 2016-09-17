@@ -11,6 +11,7 @@ def add_handler(request):
         p = Person()
         p.name = request.POST.get('name')
         p.qq = request.POST.get('qq')
+        p.classname = request.POST.get('classname')
         p.phone = request.POST.get('phone')
         p.dorm = request.POST.get('dorm')
         p.birthday = request.POST.get('birthday')
@@ -56,6 +57,7 @@ def edit_handler(request):
             p = p[0]
             p.qq = request.POST.get('qq')
             p.dorm = request.POST.get('dorm')
+            p.classname = request.POST.get('classname')
             p.birthday = request.POST.get('birthday')
             p.place = request.POST.get('place')
             p.height = request.POST.get('height')
