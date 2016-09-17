@@ -28,30 +28,32 @@ def add_handler(request):
 
 def edit_index(request):
     opt_result = False
+    p = Person.objects.all()
     if request.method == 'POST':
-        p = Person.object.filter(phone=request.POST.get('phone'))
-        p.filter(name=request.POST.get('phone'))
-        if len(p)!=1:
+        p = p.filter(phone=request.POST.get('phone'))
+        p = p.filter(name=request.POST.get('name'))
+        if len(p) != 1:
             opt_result = False
+            print("Error person: len=" + str(len(p)))
         else:
             opt_result = True
     else:
         opt_result = False
 
     if opt_result:
-        return render(request, 'info/index.html', {'type': 'edit', 'person': p[0]})
+        return render(request, 'info/index.html', {'type': 'edit', 'p': p[0]})
     else:
         return render(request, 'info/result.html', {'result': 'error'})
-
 
 
 def edit_handler(request):
     opt_result = False
     if request.method == 'POST':
-        p = Person.object.filter(id=request.POST.get('id'))
-        if len(p)!=1:
+        p = Person.objects.filter(id=request.POST.get('id'))
+        if len(p) != 1:
             opt_result = False
         else:
+            p = p[0]
             p.qq = request.POST.get('qq')
             p.dorm = request.POST.get('dorm')
             p.birthday = request.POST.get('birthday')

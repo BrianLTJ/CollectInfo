@@ -10,7 +10,10 @@
 </head>
 <body>
 <div class="container">
-    <form action="{% url 'info:add_handler' %}" method="post">
+    <form action="{% if type == 'new' %}{% url 'info:add_handler' %}{% elif type == 'edit' %}{% url 'info:edit_handler' %}{% endif %}" method="post">
+        {% if type == 'edit' %}
+        <input type="hidden" name="id" value="{{ p.id }}">
+        {% endif %}
         <div class="form-group">
             <label for="name">姓名</label>
             {% if type == 'new' %}
@@ -128,7 +131,7 @@
     <div>
         <p></p>
         <h3>已经填写？</h3>
-        <form action="" method="post">
+        <form action="{% url 'info:edit' %}" method="post">
             {% csrf_token %}
             <div class="form-group"><label for="">姓名</label><input type="text" class="input-box" name="name" required></div>
             <div class="form-group"><label for="">手机号码</label><input type="text" class="input-box" name="phone" require></div>
